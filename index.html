@@ -123,7 +123,7 @@
 
                         </div>
 
-                        <h1 class="text-2xl font-bold mb-6">Current Farm Status</h1>
+                        <h1 class="text-xl font-bold mb-4 text-green-700">Dashboard</h1>
 
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-32 mb-8">
 
@@ -173,22 +173,44 @@
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-1 absolute -right-52 top-20 gap-6 mb-8">
+                        <div class="grid grid-cols-1 absolute -right-52 top-16 gap-6 mb-8">
                             <!-- Weather Card -->
-                            <div class="bg-white rounded-lg shadow p-6 w-96" id="weather-card">
-                                <h3 class="font-bold mb-4">Weather Forecast</h3>
-                                <div class="flex flex-col items-center mb-4">
-                                    <div class="text-yellow-500 mb-2">
-                                        <!-- Weather Icon -->
-                                        <img id="weather-icon" class="h-16 w-16" alt="Weather Icon" />
+                            <div class="bg-green-800 rounded-xl shadow-sm p-4 w-96" id="weather-card">
+                                <h3 class="font-bold text-xl mb-0 text-center text-blue-400">Weather Forecast</h3>
+                            
+                                <div class="flex flex-col items-center mb-2">
+                                    <!-- Weather Icon -->
+                                    <div class="mb-2">
+                                        <img id="weather-icon" class="h-15 w-16" alt="Weather Icon" />
                                     </div>
-                                    <p class="text-4xl font-bold" id="current-temp">--°C</p>
-                                    <p class="text-gray-500" id="weather-description">Loading...</p>
+                            
+                                    <!-- Temperature -->
+                                    <p class="text-4xl font-extrabold text-gray-200" id="current-temp">--°C</p>
+                            
+                                    <!-- Description -->
+                                    <p class="text-gray-200 text-sm mt-2" id="weather-description">Loading...</p>
+                            
+                                    <!-- Weather Condition Label -->
+                                    <p class="text-sm font-semibold text-blue-200 mt-4" id="weather-label">--</p>
                                 </div>
-                                <div class="grid grid-cols-4 gap-2 text-center" id="forecast">
-                                    <!-- Forecast will be dynamically inserted here -->
+                            
+                                <!-- Advanced Details -->
+                                <div class="grid grid-cols-2 gap-1 text-center text-sm text-gray-200 mb-4">
+                                    <p id="humidity">💧 Humidity: --%</p>
+                                    <p id="wind-speed">🌬️ Wind: -- m/s</p>
+                                    <p id="cloudiness">☁️ Clouds: --%</p>
+                                </div>
+                            
+                                <!-- Forecast Section -->
+                                <div class="border-t pt-2">
+                                    <h4 class="text-sm font-semibold text-gray-200 text-center mb-2">5-Day Forecast</h4>
+                                    <div class="grid grid-cols-5 gap-3 text-center text-gray-200 text-sm" id="forecast">
+                                        <!-- JS inserts forecast here -->
+                                    </div>
                                 </div>
                             </div>
+                            
+                            
 
                             <!-- Information Card -->
                             <div class="bg-white rounded-lg shadow p-6">
