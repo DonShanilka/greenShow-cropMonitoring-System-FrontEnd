@@ -118,56 +118,88 @@
             <div class="container mx-auto px-6 py-8">
                 <!-- Dashboard Section -->
                 <section id="dashboard" class="content-section active fade-in">
-                    <div class="container mx-auto p-6 max-w-6xl">
+                    <div class="container mx-auto max-w-6xl absolute pl-12">
                         <div class="flex justify-between items-center mb-6">
                             
                         </div>
                 
                         <h1 class="text-2xl font-bold mb-6">Current Farm Status</h1>
                 
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-32 mb-8">
                 
                             <!-- Crop Status -->
-                            <div class="bg-white rounded-lg shadow p-6">
+                            <div class="bg-white rounded-lg shadow p-6 w-72">
                                 <div class="flex flex-col items-center text-center">
                                     <div class="text-green-500 mb-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                                         </svg>
                                     </div>
-                                    <p class="text-gray-500 text-sm">Crop Health</p>
-                                    <p class="text-3xl font-bold">85<span class="text-sm font-normal">%</span></p>
+                                    <p class="text-gray-500 text-sm">Total Crop</p>
+                                    <p class="text-3xl font-bold">85</p>
                                 </div>
                             </div>
                 
                             <!-- Field Status -->
-                            <div class="bg-white rounded-lg shadow p-6">
+                            <div class="bg-white rounded-lg shadow p-6 w-72">
                                 <div class="flex flex-col items-center text-center">
                                     <div class="text-yellow-500 mb-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                                         </svg>
                                     </div>
-                                    <p class="text-gray-500 text-sm">Soil Moisture</p>
-                                    <p class="text-3xl font-bold">42<span class="text-sm font-normal">%</span></p>
+                                    <p class="text-gray-500 text-sm">Total Feild</p>
+                                    <p class="text-3xl font-bold">42</p>
                                 </div>
                             </div>
                 
                             <!-- Employee Status -->
-                            <div class="bg-white rounded-lg shadow p-6">
+                            <div class="bg-white rounded-lg shadow p-6 w-72">
                                 <div class="flex flex-col items-center text-center">
                                     <div class="text-red-500 mb-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                                         </svg>
                                     </div>
-                                    <p class="text-gray-500 text-sm">Active Employees</p>
+                                    <p class="text-gray-500 text-sm">Total Employees</p>
                                     <p class="text-3xl font-bold">12</p>
                                 </div>
                             </div>
                         </div>
                 
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="grid grid-cols-1 absolute -right-52 top-20 gap-6 mb-8">
+                            <!-- Weather Card -->
+                            <div class="bg-white rounded-lg shadow p-6 w-96">
+                                <h3 class="font-bold mb-4">Weather Forecast</h3>
+                                <div class="flex flex-col items-center mb-4">
+                                    <div class="text-yellow-500 mb-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-4xl font-bold">24°C</p>
+                                    <p class="text-gray-500">Sunny, Clear Sky</p>
+                                </div>
+                                <div class="grid grid-cols-4 gap-2 text-center">
+                                    <div>
+                                        <p class="text-gray-500 text-xs">Wed</p>
+                                        <p class="text-sm font-medium">22°C</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500 text-xs">Thu</p>
+                                        <p class="text-sm font-medium">25°C</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500 text-xs">Fri</p>
+                                        <p class="text-sm font-medium">20°C</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500 text-xs">Sat</p>
+                                        <p class="text-sm font-medium">19°C</p>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Information Card -->
                             <div class="bg-white rounded-lg shadow p-6">
                                 <h3 class="font-bold mb-4">Farm Information:</h3>
@@ -202,99 +234,13 @@
                                     </div>
                                 </div>
                             </div>
-                
-                            <!-- Weather Card -->
-                            <div class="bg-white rounded-lg shadow p-6">
-                                <h3 class="font-bold mb-4">Weather Forecast</h3>
-                                <div class="flex flex-col items-center mb-4">
-                                    <div class="text-yellow-500 mb-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                                        </svg>
-                                    </div>
-                                    <p class="text-4xl font-bold">24°C</p>
-                                    <p class="text-gray-500">Sunny, Clear Sky</p>
-                                </div>
-                                <div class="grid grid-cols-4 gap-2 text-center">
-                                    <div>
-                                        <p class="text-gray-500 text-xs">Wed</p>
-                                        <p class="text-sm font-medium">22°C</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-gray-500 text-xs">Thu</p>
-                                        <p class="text-sm font-medium">25°C</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-gray-500 text-xs">Fri</p>
-                                        <p class="text-sm font-medium">20°C</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-gray-500 text-xs">Sat</p>
-                                        <p class="text-sm font-medium">19°C</p>
-                                    </div>
-                                </div>
-                            </div>
-                
-                            <!-- Bar Chart Card -->
-                            <div class="bg-white rounded-lg shadow p-6">
-                                <h3 class="font-bold mb-4">Crop Yield (Last 5 Years)</h3>
-                                <div class="h-48">
-                                    <canvas id="yieldChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                
-                        <!-- Farm Activities Table -->
-                        <div class="bg-white rounded-lg shadow p-6">
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="font-bold">Scheduled Activities</h3>
-                                <button class="flex items-center text-green-500 font-medium text-sm">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                                    </svg>
-                                    Add an activity
-                                </button>
-                            </div>
-                            <div class="overflow-x-auto">
-                                <table class="w-full">
-                                    <thead>
-                                        <tr class="text-left text-gray-500 text-sm border-b">
-                                            <th class="pb-3 font-medium">Activity</th>
-                                            <th class="pb-3 font-medium">Date</th>
-                                            <th class="pb-3 font-medium">Duration</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="border-b">
-                                            <td class="py-3">
-                                                <div class="flex items-center">
-                                                    <div class="bg-yellow-100 p-2 rounded mr-3">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                                                        </svg>
-                                                    </div>
-                                                    <span>Corn Planting</span>
-                                                </div>
-                                            </td>
-                                            <td class="py-3">25th April 2025</td>
-                                            <td class="py-3">2 weeks</td>
-                                        </tr>
-                                        <tr class="border-b">
-                                            <td class="py-3">
-                                                <div class="flex items-center">
-                                                    <div class="bg-blue-100 p-2 rounded mr-3">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                                                        </svg>
-                                                    </div>
-                                                    <span>Irrigation Maintenance</span>
-                                                </div>
-                                            </td>
-                                            <td class="py-3">8th May 2025</td>
-                                            <td class="py-3">3 days</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                        </div>  
+                        
+                        <!-- Bar Chart Card -->
+                        <div class="bg-white rounded-lg shadow p-6 w-4/5">
+                            <h3 class="font-bold mb-4">Crop Yield (Last 5 Years)</h3>
+                            <div class="h-48">
+                                <canvas id="yieldChart"></canvas>
                             </div>
                         </div>
                     </div>                
