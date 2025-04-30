@@ -84,3 +84,198 @@ async function getWeather() {
 }
 
 getWeather();
+
+
+//  Bar Chart
+async function loadCropYieldChart() {
+    const jwtToken = localStorage.getItem('jwtToken');
+    try {
+        const res = await fetch("http://localhost:5050/greenshow/api/v1/crops", {
+            headers: { Authorization: `Bearer ${jwtToken}` }
+        });
+        const json = await res.json();
+
+        console.log("Crop response:", json); // <-- Add this
+
+        const crops = json.data;
+        if (!crops || !Array.isArray(crops)) {
+            throw new Error("Invalid crop data format");
+        }
+
+        // Proceed with processing crops...
+        const currentYear = new Date().getFullYear();
+        const yieldByYear = {
+            [currentYear - 4]: 0,
+            [currentYear - 3]: 0,
+            [currentYear - 2]: 0,
+            [currentYear - 1]: 0,
+            [currentYear]: 0
+        };
+
+        crops.forEach(crop => {
+            const year = new Date(crop.date).getFullYear(); // adjust field name as needed
+            if (year in yieldByYear) {
+                yieldByYear[year] += crop.yield || 1; // adjust field name
+            }
+        });
+
+        renderYieldChart(Object.keys(yieldByYear), Object.values(yieldByYear));
+
+    } catch (err) {
+        console.error("Failed to load chart data:", err);
+    }
+}
+
+
+function renderBarChart(cropCount, fieldCount) {
+    const ctx = document.getElementById('yieldChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Crops', 'Fields'],
+            datasets: [{
+                label: 'Total Count',
+                data: [cropCount, fieldCount],
+                backgroundColor: ['#4ade80', '#60a5fa'], // green and blue
+                borderRadius: 5
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+// Pie Chart js
+function loadResourceChart() {
+    const jwtToken = localStorage.getItem('jwtToken');
+
+    let counts = {
+        Equipment: 0,
+        Field: 0,
+        Staff: 0,
+        Vehicle: 0,
+        Crop: 0
+    };
+
+    function tryRenderChart() {
+        const total = counts.Equipment + counts.Field + counts.Staff + counts.Vehicle + counts.Crop;
+        if (total === 0) return;
+
+        const percentages = [
+            (counts.Equipment / total * 100).toFixed(1),
+            (counts.Field / total * 100).toFixed(1),
+            (counts.Staff / total * 100).toFixed(1),
+            (counts.Vehicle / total * 100).toFixed(1),
+            (counts.Crop / total * 100).toFixed(1)
+        ];
+
+        const ctx = document.getElementById('resourceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Equipment', 'Field', 'Staff', 'Vehicle', 'Crop'],
+                datasets: [{
+                    label: 'Resource %',
+                    data: percentages,
+                    backgroundColor: [
+                        '#A78BFA', // Equipment - green
+                        '#60A5FA', // Field - blue
+                        '#FBBF24', // Staff - yellow
+                        '#F87171', // Vehicle - red
+                        '#4ADE80'  // Crop - purple 
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.label}: ${context.raw}%`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    let loadedCount = 0;
+    function checkAllLoaded() {
+        loadedCount++;
+        if (loadedCount === 5) {
+            tryRenderChart();
+        }
+    }
+
+    // Load each resource
+    $.ajax({
+        url: "http://localhost:5050/greenshow/api/v1/equipment",
+        type: "GET",
+        headers: { Authorization: `Bearer ${jwtToken}` },
+        success: (res) => {
+            counts.Equipment = res.data?.length || 0;
+            checkAllLoaded();
+        }
+    });
+
+    $.ajax({
+        url: "http://localhost:5050/greenshow/api/v1/field",
+        type: "GET",
+        headers: { Authorization: `Bearer ${jwtToken}` },
+        success: (res) => {
+            counts.Field = res.length || res.data?.length || 0;
+            checkAllLoaded();
+        }
+    });
+
+    $.ajax({
+        url: "http://localhost:5050/greenshow/api/v1/staff",
+        type: "GET",
+        headers: { Authorization: `Bearer ${jwtToken}` },
+        success: (res) => {
+            counts.Staff = res.data?.length || res.length || 0;
+            checkAllLoaded();
+        }
+    });
+
+    $.ajax({
+        url: "http://localhost:5050/greenshow/api/v1/vehicle",
+        type: "GET",
+        headers: { Authorization: `Bearer ${jwtToken}` },
+        success: (res) => {
+            counts.Vehicle = res.data?.length || res.length || 0;
+            checkAllLoaded();
+        }
+    });
+
+    // ✅ Load Crop
+    $.ajax({
+        url: "http://localhost:5050/greenshow/api/v1/crops",
+        type: "GET",
+        headers: { Authorization: `Bearer ${jwtToken}` },
+        success: (res) => {
+            counts.Crop = res.data?.length || 0;
+            checkAllLoaded();
+        }
+    });
+}
+
+loadResourceChart();
+

@@ -249,12 +249,21 @@
                         </div>
 
                         <!-- Bar Chart Card -->
-                        <div class="bg-white rounded-lg shadow p-6 w-4/5">
+                        <div class="bg-white rounded-lg shadow p-6 w-2/5">
                             <h3 class="font-bold mb-4">Crop Yield (Last 5 Years)</h3>
                             <div class="h-48">
                                 <canvas id="yieldChart"></canvas>
                             </div>
                         </div>
+
+                        <!-- Pie Chart -->
+                        <div class="bg-white rounded-lg shadow p-6 w-2/5 absolute -right-52">
+                            <h3 class="font-bold mb-4">Resource Distribution</h3>
+                            <div class="h-64">
+                                <canvas id="resourceChart"></canvas>
+                            </div>
+                        </div>
+                        
                     </div>
                 </section>
                 <!-- ####################################################################################################################### -->
@@ -1735,6 +1744,62 @@
     <script src="./js/Log/LogPage.js"></script>
     <script src="./js/ViewLog/viewLog.js"></script>
     <script src="./js/dashbord/dashbord.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const cropYield = {
+            2020: 120,
+            2021: 150,
+            2022: 170,
+            2023: 140,
+            2024: 180
+        };
+    
+        const fieldYield = {
+            2020: 100,
+            2021: 130,
+            2022: 160,
+            2023: 120,
+            2024: 170
+        };
+    
+        const years = Object.keys(cropYield);
+        const cropValues = Object.values(cropYield);
+        const fieldValues = Object.values(fieldYield);
+    
+        const ctx = document.getElementById('yieldChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: years,
+                datasets: [
+                    {
+                        label: 'Crop Yield',
+                        data: cropValues,
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)'
+                    },
+                    {
+                        label: 'Field Yield',
+                        data: fieldValues,
+                        backgroundColor: 'rgba(255, 206, 86, 0.6)'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                    title: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Yield (tons)' }
+                    }
+                }
+            }
+        });
+    </script>
+    
 </body>
 
 </html>
