@@ -311,3 +311,34 @@ function renderProgressBars(percentages) {
         container.appendChild(bar);
     });
 }
+
+
+// task js
+let taskCount = 0;
+
+function toggleTaskModal(show) {
+    const modal = document.getElementById('taskModal');
+    modal.classList.toggle('hidden', !show);
+}
+
+document.getElementById('taskForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const task = document.getElementById('taskName').value;
+    const assignedTo = document.getElementById('assignedTo').value;
+    const time = document.getElementById('taskTime').value;
+
+    const tbody = document.getElementById('taskTableBody');
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td class="p-2 border">${++taskCount}</td>
+        <td class="p-2 border">${task}</td>
+        <td class="p-2 border">${assignedTo}</td>
+        <td class="p-2 border">${time}</td>
+    `;
+    tbody.appendChild(row);
+
+    // Clear and close modal
+    this.reset();
+    toggleTaskModal(false);
+});
