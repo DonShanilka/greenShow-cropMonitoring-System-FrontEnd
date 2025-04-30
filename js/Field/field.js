@@ -8,6 +8,7 @@ function initializeField(){
 function loadFieldTable() {
     let jwtToken = localStorage.getItem('jwtToken');
     console.log(jwtToken)
+
     $.ajax({
         url: "http://localhost:5050/greenshow/api/v1/field",
         type: "GET",
@@ -16,6 +17,8 @@ function loadFieldTable() {
         },
         success: (res) => {
             addFieldToTable(res);
+            const field = res.length;
+            document.getElementById("total-fields").innerText = field;
         },
         error: (err) => {
             console.error("Error loading field data:", err);

@@ -7,9 +7,10 @@ function initializeCrop(){
     loadFieldOnLog();
 }
 
-function loadCropTable(){
+function loadCropTable() {
     let jwtToken = localStorage.getItem('jwtToken');
-    console.log("jwt token"+jwtToken)
+    console.log("jwt token" + jwtToken);
+
     $.ajax({
         url: "http://localhost:5050/greenshow/api/v1/crops",
         type: "GET",
@@ -17,13 +18,16 @@ function loadCropTable(){
             Authorization: `Bearer ${jwtToken}`
         },
         success: (res) => {
-            addCropToTable(res.data)
+            const crops = res.data;
+            addCropToTable(crops);
+            document.getElementById("total-crops").innerText = crops.length;
         },
         error: (res) => {
-            // console.error(res);
+            console.error("Failed to load crops:", res);
         }
     });
 }
+
 
 // Load Field Id
 function loadFieldOnLog() {

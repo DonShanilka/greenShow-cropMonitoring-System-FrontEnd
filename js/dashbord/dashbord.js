@@ -1,6 +1,8 @@
-const apiKey = '4cc364fbc08bf7bb27e45c9a4e9c742b';
+const apiKey = '79ba89af816650552640ef5fe0b0244c';
 const city = 'Maharagama';
 
+
+// Wether Card Js
 async function getWeather() {
     try {
         const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`);
@@ -32,6 +34,7 @@ async function getWeather() {
         } else {
             label = "🌤️ Mild Weather";
         }
+
         document.getElementById('weather-label').innerText = label;
 
         // Forecast
@@ -43,6 +46,7 @@ async function getWeather() {
 
         const days = forecastData.list.filter(item => item.dt_txt.includes('12:00:00')).slice(0, 5);
         days.forEach(day => {
+
             const date = new Date(day.dt_txt);
             const weekday = date.toLocaleDateString('en-US', { weekday: 'short' });
             const temp = `${Math.round(day.main.temp)}°C`;

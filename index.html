@@ -138,9 +138,10 @@
                                         </svg>
                                     </div>
                                     <p class="text-gray-500 text-sm">Total Crop</p>
-                                    <p class="text-3xl font-bold">85</p>
+                                    <p class="text-3xl font-bold" id="total-crops">--</p>
                                 </div>
                             </div>
+                            
 
                             <!-- Field Status -->
                             <div class="bg-white rounded-lg shadow p-6 w-72">
@@ -153,7 +154,7 @@
                                         </svg>
                                     </div>
                                     <p class="text-gray-500 text-sm">Total Feild</p>
-                                    <p class="text-3xl font-bold">42</p>
+                                    <p class="text-3xl font-bold" id="total-fields">--</p>
                                 </div>
                             </div>
 
@@ -177,30 +178,30 @@
                             <!-- Weather Card -->
                             <div class="bg-green-800 rounded-xl shadow-sm p-4 w-96" id="weather-card">
                                 <h3 class="font-bold text-xl mb-0 text-center text-blue-400">Weather Forecast</h3>
-                            
+
                                 <div class="flex flex-col items-center mb-2">
                                     <!-- Weather Icon -->
                                     <div class="mb-2">
                                         <img id="weather-icon" class="h-15 w-16" alt="Weather Icon" />
                                     </div>
-                            
+
                                     <!-- Temperature -->
                                     <p class="text-4xl font-extrabold text-gray-200" id="current-temp">--°C</p>
-                            
+
                                     <!-- Description -->
                                     <p class="text-gray-200 text-sm mt-2" id="weather-description">Loading...</p>
-                            
+
                                     <!-- Weather Condition Label -->
                                     <p class="text-sm font-semibold text-blue-200 mt-4" id="weather-label">--</p>
                                 </div>
-                            
+
                                 <!-- Advanced Details -->
                                 <div class="grid grid-cols-2 gap-1 text-center text-sm text-gray-200 mb-4">
                                     <p id="humidity">💧 Humidity: --%</p>
                                     <p id="wind-speed">🌬️ Wind: -- m/s</p>
                                     <p id="cloudiness">☁️ Clouds: --%</p>
                                 </div>
-                            
+
                                 <!-- Forecast Section -->
                                 <div class="border-t pt-2">
                                     <h4 class="text-sm font-semibold text-gray-200 text-center mb-2">5-Day Forecast</h4>
@@ -209,8 +210,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            
+
 
                             <!-- Information Card -->
                             <div class="bg-white rounded-lg shadow p-6">
@@ -261,7 +261,7 @@
                         </div>
                     </div>
                 </section>
-                <!-- ################################################################################################################################## -->
+                <!-- ####################################################################################################################### -->
 
 
 
@@ -504,7 +504,7 @@
                 </section>
 
 
-                <!-- ############################################################## Field page #################################################################### -->
+                <!-- ############################################################## Field page ############################################################ -->
 
                 <!-- Other sections with placeholder content -->
                 <section id="field" class="content-section fade-in">
@@ -1014,7 +1014,7 @@
             </section>
 
 
-            <!-- ################################################################ Vehical page ############################################################## -->
+            <!-- ################################################################ Vehical page ########################################################### -->
             <section id="vehical" class="content-section fade-in">
                 <div class="container mx-auto px-2">
                     <!-- Header -->
