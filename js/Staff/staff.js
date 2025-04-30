@@ -22,6 +22,8 @@ function loadStaffTable() {
             } else {
                 console.error("Unexpected response format:", res);
             }
+            const staff = res.data
+            document.getElementById("total-staf").innerText = staff.length;
         },
         error: (err) => {
             console.error("Error loading staff data:", err);
