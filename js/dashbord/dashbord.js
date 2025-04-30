@@ -137,7 +137,7 @@ function renderBarChart(cropCount, fieldCount) {
             datasets: [{
                 label: 'Total Count',
                 data: [cropCount, fieldCount],
-                backgroundColor: ['#4ade80', '#60a5fa'], // green and blue
+                backgroundColor: ['#60A5FA', '#A78BFA'], // green and blue4ade80
                 borderRadius: 5
             }]
         },
@@ -190,11 +190,11 @@ function loadResourceChart() {
                     label: 'Resource %',
                     data: percentages,
                     backgroundColor: [
-                        '#A78BFA', // Equipment - green
+                        '#A78BFA', // Equipment - purple
                         '#60A5FA', // Field - blue
                         '#FBBF24', // Staff - yellow
                         '#F87171', // Vehicle - red
-                        '#4ADE80'  // Crop - purple 
+                        '#4ADE80'  // Crop - green 
                     ]
                 }]
             },
@@ -279,3 +279,35 @@ function loadResourceChart() {
 
 loadResourceChart();
 
+
+// Progess Bar
+
+function renderProgressBars(percentages) {
+    const container = document.getElementById('resourceProgress');
+    container.innerHTML = ''; // Clear existing bars
+
+    const labels = ['Equipment', 'Field', 'Staff', 'Vehicle', 'Crop'];
+    const colors = {
+        Equipment: 'bg-green-400',
+        Field: 'bg-blue-400',
+        Staff: 'bg-yellow-400',
+        Vehicle: 'bg-red-400',
+        Crop: 'bg-purple-400'
+    };
+
+    labels.forEach((label, i) => {
+        const percent = percentages[i];
+
+        const bar = document.createElement('div');
+        bar.innerHTML = `
+            <div class="flex justify-between mb-1">
+                <span class="text-sm font-medium text-gray-700">${label}</span>
+                <span class="text-sm font-medium text-gray-700">${percent}%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-4">
+                <div class="${colors[label]} h-4 rounded-full" style="width: ${percent}%"></div>
+            </div>
+        `;
+        container.appendChild(bar);
+    });
+}
